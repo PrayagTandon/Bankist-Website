@@ -29,3 +29,6 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+/////////////////////////////////////////
+// IMPLEMENTING SMOOTH SCROLLING
