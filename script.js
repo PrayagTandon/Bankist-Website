@@ -54,3 +54,21 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 /////////////////////////////////////////
 // IMPLEMENTING TABBED COMPONENT
+tabContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  // Guard Clause....
+  if (!clicked) return;
+
+  // REMOVING THE CLASSES
+  operationContainer.forEach(cont => {
+    cont.classList.remove('operations__content--active');
+  })
+  tabs.forEach((tab) => {
+    tab.classList.remove('operations__tab--active');
+  });
+
+  // ADDING THE CLASSES
+  clicked.classList.add('operations__tab--active');
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
+});
