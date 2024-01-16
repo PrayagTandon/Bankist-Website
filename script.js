@@ -96,4 +96,22 @@ nav.addEventListener('mouseover', handleover(0.5));
 nav.addEventListener('mouseout', handleover(1));
 
 /////////////////////////////////////////
-// IMPLEMENTING MENU NAVIGATION
+// IMPLEMENTING A STICKY NAVIGATION
+const navHeight = nav.getBoundingClientRect().height;
+
+// Callback function for Intersection Observer
+const stickNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+  entry.intersectionRatio === navOptions.threshold ? nav.classList.add('sticky') : nav.classList.remove('sticky');
+};
+
+// Options for Intersection Observer
+const navOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`
+};
+
+const observer = new IntersectionObserver(stickNav, navOptions);
+observer.observe(header); // The element to observe
