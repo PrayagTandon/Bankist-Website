@@ -106,7 +106,7 @@ const stickNav = function (entries) {
   entry.intersectionRatio === navOptions.threshold ? nav.classList.add('sticky') : nav.classList.remove('sticky');
 };
 
-// Options for Intersection Observer
+// Options for Intersection
 const navOptions = {
   root: null,
   threshold: 0,
@@ -115,3 +115,7 @@ const navOptions = {
 
 const observer = new IntersectionObserver(stickNav, navOptions);
 observer.observe(header); // The element to observe
+
+/////////////////////////////////////////
+// SCROLL ANIMATION (Revealing Elements on Scroll)
+
