@@ -9,6 +9,8 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabContainer = document.querySelector('.operations__tab-container');
 const operationContainer = document.querySelectorAll('.operations__content');
+const nav = document.querySelector('.nav');
+const navLink = document.querySelectorAll('.nav__link');
 
 ///////////////////////////////////////
 // Modal window
@@ -75,3 +77,19 @@ tabContainer.addEventListener('click', function (e) {
 
 /////////////////////////////////////////
 // IMPLEMENTING MENU NAVIGATION
+const handleover = function (opacity) {
+  return function (e) {
+    const link = e.target;
+    if (e.target.classList.contains('nav__link')) {
+      const logo = link.closest('.nav').querySelector('.nav__logo');
+
+      navLink.forEach((el) => {
+        return el !== link ? el.style.opacity = opacity : '';
+      });
+      logo.style.opacity = opacity;
+    }
+  }
+};
+
+nav.addEventListener('mouseover', handleover(0.5));
+nav.addEventListener('mouseout', handleover(1));
