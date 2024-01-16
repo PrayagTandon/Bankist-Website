@@ -11,6 +11,7 @@ const tabContainer = document.querySelector('.operations__tab-container');
 const operationContainer = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
 const navLink = document.querySelectorAll('.nav__link');
+const header = document.querySelector('.header');
 
 ///////////////////////////////////////
 // Modal window
@@ -93,3 +94,6 @@ const handleover = function (opacity) {
 
 nav.addEventListener('mouseover', handleover(0.5));
 nav.addEventListener('mouseout', handleover(1));
+
+/////////////////////////////////////////
+// IMPLEMENTING MENU NAVIGATION
