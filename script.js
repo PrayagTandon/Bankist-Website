@@ -12,6 +12,7 @@ const operationContainer = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
 const navLink = document.querySelectorAll('.nav__link');
 const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
 
 ///////////////////////////////////////
 // Modal window
@@ -119,3 +120,22 @@ observer.observe(header); // The element to observe
 /////////////////////////////////////////
 // SCROLL ANIMATION (Revealing Elements on Scroll)
 
+// Callback Function
+const sectionReveal = function (entries, observer) {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    entry.target.classList.remove('section--hidden');
+    observer.unobserve(entry.target);
+  });
+};
+
+const sectionObserver = new IntersectionObserver(sectionReveal, {
+  root: null,
+  threshold: 0.2
+});
+
+allSections.forEach((section) => {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
