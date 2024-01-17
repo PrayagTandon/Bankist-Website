@@ -139,3 +139,6 @@ allSections.forEach((section) => {
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
 });
+
+/////////////////////////////////////////
+// Lazy Loading of Images
