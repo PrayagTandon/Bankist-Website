@@ -104,7 +104,6 @@ const navHeight = nav.getBoundingClientRect().height;
 // Callback function for Intersection Observer
 const stickNav = function (entries) {
   const [entry] = entries;
-  console.log(entry);
   entry.intersectionRatio === navOptions.threshold ? nav.classList.add('sticky') : nav.classList.remove('sticky');
 };
 
@@ -162,7 +161,7 @@ const lazyLoadImg = function (entries, observer) {
 const imgObserver = new IntersectionObserver(lazyLoadImg, {
   root: null,
   threshold: 0.1,
-  rootMargin: '200px'
+  // rootMargin: '200px'
 });
 
 // SELECTING THE ELEMENT
