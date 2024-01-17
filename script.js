@@ -13,6 +13,7 @@ const nav = document.querySelector('.nav');
 const navLink = document.querySelectorAll('.nav__link');
 const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
+const allImages = document.querySelectorAll('img[data-src]');
 
 ///////////////////////////////////////
 // Modal window
@@ -142,3 +143,27 @@ allSections.forEach((section) => {
 
 /////////////////////////////////////////
 // Lazy Loading of Images
+
+// Callback Function
+const lazyLoadImg = function (entries, observer) {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    entry.target.src = entry.target.dataset.src;
+
+    entry.target.addEventListener('load', function () {
+      entry.target.classList.remove('lazy-img');
+    });
+
+    observer.unobserve(entry.target);
+  });
+};
+
+const imgObserver = new IntersectionObserver(lazyLoadImg, {
+  root: null,
+  threshold: 0.1,
+  rootMargin: '200px'
+});
+
+// SELECTING THE ELEMENT
+allImages.forEach(img => imgObserver.observe(img));
